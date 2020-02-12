@@ -6,32 +6,28 @@ public class playerScript_ex00 : MonoBehaviour
 {
     public bool moveable;
     public float speed;
+    public float center;
     [SerializeField] float up_velocity;
-    [SerializeField] bool jump;
+    [SerializeField] LayerMask ground_layer;
 
     // Start is called before the first frame update
     void Start()
     {
         moveable = false;
-        jump = false;
     }
 
-    void OnCollisionStay2D(Collision2D col)
+    bool canJump()
     {
-        if (col.gameObject.layer == 8)
-            jump = true;
-    }
-
-    void OnCollisionExit2D(Collision2D col)
-    {
-        if (col.gameObject.layer == 8)
-            jump = false;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, center, ground_layer);
+        if (hit.collider != null)
+            return true;
+        return false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveable && jump && Input.GetKeyDown("space"))
+        if (moveable && canJump() && Input.GetKeyDown("space"))
             this.GetComponent<Rigidbody2D>().AddForce(Vector3.up * up_velocity);
         if (Input.GetKey("left") && moveable)
             transform.Translate(Vector3.left * speed);

@@ -38,18 +38,21 @@ public class Camera : MonoBehaviour
             this.transform.position = new Vector3(obj_Claire.transform.position.x, obj_Claire.transform.position.y, -10);
             obj_Claire.GetComponent<playerScript_ex00>().speed = Claire_speed;
             obj_Claire.GetComponent<playerScript_ex00>().moveable = true;
+            obj_Claire.GetComponent<playerScript_ex00>().center = 0.4f;
         }
         if (which_player == 2)
         {
             this.transform.position = new Vector3(obj_John.transform.position.x, obj_John.transform.position.y, -10);
             obj_John.GetComponent<playerScript_ex00>().speed = John_speed;
             obj_John.GetComponent<playerScript_ex00>().moveable = true;
+            obj_John.GetComponent<playerScript_ex00>().center = 0.4f;
         }
         if (which_player == 3)
         {
             this.transform.position = new Vector3(obj_Thomas.transform.position.x, obj_Thomas.transform.position.y, -10);
             obj_Thomas.GetComponent<playerScript_ex00>().speed = Thomas_speed;
             obj_Thomas.GetComponent<playerScript_ex00>().moveable = true;
+            obj_Thomas.GetComponent<playerScript_ex00>().center = 0.15f;
         }
     }
 }
